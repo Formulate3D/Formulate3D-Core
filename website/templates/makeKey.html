@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}APIKEYS{% endblock %}
+{% block content %}
+
+<style>
+    body{background-color: black;}
+    input{
+        background-color: #464646;
+        color: white;
+    }
+    input[type=text]:focus {
+        background-color: rgb(154, 222, 245);
+        color: black;
+    }
+    label, h3, h2{
+        color: aliceblue;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgb(255, 255, 255);
+        opacity: 1; /* Firefox */
+        }
+</style>
+
+<link rel="stylesheet" href="static/API.css">
+<h1>Make New Key</h1>
+<form method="POST">
+    <label for="password">Enter your password</label>
+    <br />
+    <input
+        type="password"
+        class="from-control"
+        id="password"
+        name="password"
+        placeholder="Enter Password"
+    />
+    <button class="submit">Submit</button>
+</form>
+
+{% endblock %}

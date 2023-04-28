@@ -1,0 +1,131 @@
+{% extends "base.html" %} {% block title %}APIKEYS{% endblock %}
+{% block content %}
+
+<style>
+    body{background-color: black;}
+    table, th, td {
+      border:1px solid rgb(255, 255, 255);
+      color: #ffffff;
+    }
+    label, h3, h2{
+        color: aliceblue;
+    }
+
+</style>
+<link rel="stylesheet" href="static/API.css">
+
+
+{% if user.user_type == 'admin' %}
+    {% if KEYS.query.all() == [] %}
+        <h3 allign="center">NO KEYS</h3>
+    {% else %}
+        <table style="width:100%">
+            <tr>
+
+                <th>User</th>
+                <th>Time Remaining</th>
+                <th>Key</th>
+                <th>Copy</th>
+
+            </tr>
+	    {% if user.name == 'admin' %}
+                {% for item in KEYS.query.all() %}
+                    <tr>
+                        <td>{{(users.query.filter_by(id = item.user_id).first()).name}}</td>
+                        <td>{{item.timeval()}}</td>
+                        <td>{{item.key}}</td>
+                        <td>
+                            <button class="copybnt" alt='Copy Key' style="font-size:24px" onclick="copykey('{{item.key}}')"><img src="/static/copy-solid.png" height="20px"/></button></td>
+                            <script>
+                                function copykey(key) {
+                              
+                                    /* Copy text into clipboard */
+                                    navigator.clipboard.writeText
+                                        (key);
+                                }
+                            </script>
+                        <td>
+                            <button class="openmodal" style="font-size:24px" onclick="document.getElementById('id{{item.id}}').style.display='block'; {{item.id}}"><i class="fa fa-trash-o"></i></button>
+                            <div id="id{{item.id}}" class="modal" item>
+
+                                <span onclick="document.getElementById('id{{item.id}}').style.display='none'" class="close" title="Close">&times;</span>
+                                <form class="modal-content">
+                                  <div class="container">
+                                    {% if users.query.filter_by(id = item.user_id).first().name == user.name %}
+                                        <h1>Delete Key?</h1>
+                                        <p>Are you sure you want to delete this Key?</p>
+                              
+                                        <div class="clearfix">
+                                        <button type="button" class="cancelbtn" onclick="document.getElementById('id{{item.id}}').style.display='none'" class="close" title="Close">Cancel</button>
+                                        <button type="button" class="deletebtn" onClick="document.getElementById('id{{item.id}}').style.display='none'; deleteKey({{ item.id }})">Delete
+                                        </button>
+                                    {% else %}
+                                        <h1> Only The key owner can delete their keys </h1>
+                                    {% endif %}
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                        </td>
+                    </tr>
+                
+                {% endfor %}
+                
+	    {% else %}
+                {% for item in KEYS.query.all() %}
+		  {% if item.user_id == user.id %}
+                    <tr>
+                        <td>{{(users.query.filter_by(id = item.user_id).first()).name}}</td>
+                        <td>{{item.timeval()}}</td>
+                        <td>{{item.key}}</td>
+                        <td>
+                            <button class="copybnt" alt='Copy Key' style="font-size:24px" onclick="copykey('{{item.key}}')"><img src="/static/copy-solid.png" height="20px"/></button></td>
+                            <script>
+                                function copykey(key) {
+                              
+                                    /* Copy text into clipboard */
+                                    navigator.clipboard.writeText
+                                        (key);
+                                }
+                            </script>
+                        <td>
+                            <button class="openmodal" style="font-size:24px" onclick="document.getElementById('id{{item.id}}').style.display='block'; {{item.id}}"><i class="fa fa-trash-o"></i></button>
+                            <div id="id{{item.id}}" class="modal" item>
+
+                                <span onclick="document.getElementById('id{{item.id}}').style.display='none'" class="close" title="Close">&times;</span>
+                                <form class="modal-content">
+                                  <div class="container">
+                                    {% if users.query.filter_by(id = item.user_id).first().name == user.name %}
+                                        <h1>Delete Key?</h1>
+                                        <p>Are you sure you want to delete this Key?</p>
+                              
+                                        <div class="clearfix">
+                                        <button type="button" class="cancelbtn" onclick="document.getElementById('id{{item.id}}').style.display='none'" class="close" title="Close">Cancel</button>
+                                        <button type="button" class="deletebtn" onClick="document.getElementById('id{{item.id}}').style.display='none'; deleteKey({{ item.id }})">Delete
+                                        </button>
+                                    {% else %}
+                                        <h1> Only The key owner can delete their keys </h1>
+                                    {% endif %}
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                        </td>
+                    </tr>
+		  {% endif %}
+		{% endfor %}
+	    {% endif %}
+        </table>
+        
+    {% endif %}
+    <form method = 'POST'>
+        <button class="btn btn-primary" style="font-size:24px" >Add Key</button>
+    </form>
+    
+
+
+{% else %}
+<h3>Elevated account needed</h3>
+{% endif %}
+
+{% endblock %}

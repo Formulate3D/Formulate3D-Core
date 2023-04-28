@@ -1,0 +1,174 @@
+body{
+    background-color: black;
+    color:#ffffff;
+}
+
+
+
+section{
+    min-height: 50vh;
+}
+
+footer{
+    background-color: rgb(32, 32, 34);
+}
+
+.logoplate{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 40px;
+
+}
+.centering{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logogroup{
+    height: auto;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.formlogo {
+    max-width: 10%;
+    display: inline;
+}
+
+.formlogo{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.formlogo2{
+    position: relative;
+    max-width: 50%;
+    display: inline;
+    vertical-align: bottom;
+    left: -8px;
+}
+
+.formlogo2{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.logotitle{
+    position: relative;
+    color: #ffffff;
+    display: inline;
+    vertical-align: bottom;
+    left: -8px;
+    top: 10px;
+}
+
+.logotitle3D{
+    position: relative;
+    color: #ffffff;
+    display: inline;
+    vertical-align: bottom;
+    left: -8px;
+    top: 17px;
+}
+
+.btn{
+    background-color: black;
+    color:white;
+    border: 2px solid #ffffff;
+}
+
+.btn:hover {
+    background-color: #3c3b42;
+    color: white;
+  }
+
+.prezFrame{
+    height: auto;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.informationbody{
+    color: #dbdbdb;
+    font-size: 40px;
+}
+
+
+.cards{
+    display: flex;
+}
+
+.footlogo{
+    max-height: 100px;
+}
+
+.foots{
+    background-color: rgb(44, 43, 51);
+    width: 100%;
+    min-height: 25px;
+}
+
+
+.footers_contnent{
+    margin-left: 30px;
+    display:inline;
+    font-size: small;
+
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+.pointed{
+    list-style-type: circle;
+    transform: translateX(13%)
+}
+
+
+.footlogo{
+    transition-delay: 2000ms;
+}
+
+.func:nth-child(2){
+    transition-delay: 200ms;
+}
+.func:nth-child(3){
+    transition-delay: 400ms;
+}
+
+
+.sus{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-5%);
+    transition: all 1s;
+}
+
+@media(prefers-reduced-motion) {
+    .sus{
+        transition: none;
+    }
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}

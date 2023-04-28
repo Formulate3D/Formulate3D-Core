@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block title %}Printers{% endblock %}
+{% block content %}
+<style>
+    body{background-color: black;}
+    label, h3, h2{
+        color: aliceblue;
+    }
+</style>
+<form method="POST">
+    <h3 allign="center">Printer Setup</h3>
+    <div class ="form-group">
+        <label for="ip">IP</label>
+        <input
+            type="text" 
+            minlength="7" 
+            maxlength="15" 
+            size="15" 
+            pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+            class="from-control"
+            id="ip"
+            name="ip"
+            placeholder="Enter IP address"
+        />
+    </div>
+    <div class ="form-group">
+        <label for="port">Port</label>
+        <input
+            type="text"
+            class="from-control"
+            id="port"
+            name="port"
+            placeholder="Enter Port"
+        />
+    </div>
+    <div class ="form-group">
+        <label for="name">Name</label>
+        <input
+            type="text"
+            class="from-control"
+            id="name"
+            name="name"
+            placeholder="Enter name"
+        />
+    </div>
+    <h2>Additional information</h2>
+    <div class ="form-group">
+        <label for="manufacturer">Manufacturer</label>
+        <input
+            type="text"
+            class="from-control"
+            id="manufacturer"
+            name="manufacturer"
+            placeholder="Enter manufacturer"
+        />
+    </div>
+    <div class ="form-group">
+        <label for="model">Model</label>
+        <input
+            type="text"
+            class="from-control"
+            id="model"
+            name="model"
+            placeholder="Enter Printer Model"
+        />
+    </div>
+    <div class ="form-group">
+        <label for="nozzel">Nozzel Diameter</label>
+        <input
+            type="text"
+            class="from-control"
+            id="nozzel"
+            name="nozzel"
+            placeholder="Enter nozzel diameter"
+        />
+    </div>
+    <div class ="form-group">
+        <label for="bed">Heated bed</label>
+        <input
+            type="checkbox"
+            class="from-control"
+            id="bed"
+            name="bed"
+        />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
